@@ -1,27 +1,12 @@
 pipeline {
     agent any
-    parameters {
-        string (
-            defaultValue: 'master',
-            description: '',
-            name : 'BRANCH_PATTERN')
-    }
 
     stages {
         stage ('Prepare') {
             steps {
-		sh 'rm -rf *'
-                checkout([$class: 'GitSCM',
-                    branches: [[name: "origin/${BRANCH_PATTERN}"]],
-                    doGenerateSubmoduleConfigurations: false,
-                    extensions: [[$class: 'LocalBranch']],
-                    submoduleCfg: [],
-                    userRemoteConfigs: [[
-                        credentialsId: 'jenkins',
-                        url: 'https://github.com/mramotowski/val']]])
+		sh 'ls'
             }
-        }
-
+	}
 	stage ('Build') {
 	    steps {
 		sh 'make'
