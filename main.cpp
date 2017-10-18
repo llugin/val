@@ -10,7 +10,7 @@ string MyInfo(const ::testing::TestParamInfo<const char *>& info) {
 }
 
 TEST_P(FooTest, cos) {
-	ASSERT_STREQ(GetParam(), "test2");
+	std::cout << GetParam();
 }
 
 INSTANTIATE_TEST_CASE_P(InstantiationName,
