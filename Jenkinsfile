@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage ('Prepare') {
             steps {
+		sh 'rm -rf *'
                 checkout([$class: 'GitSCM',
                     branches: [[name: "origin/${BRANCH_PATTERN}"]],
                     doGenerateSubmoduleConfigurations: false,
